@@ -1,0 +1,11 @@
+*~
+*.dll
+*.o
+*.exe
+*.a
+*.lib
+*.so
+.Rhistory
+.Rbuildignore
+.Rdata
+.Rproj.user
