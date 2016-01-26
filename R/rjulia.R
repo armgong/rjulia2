@@ -1,4 +1,11 @@
-
+julia_init_new()
+{
+dyn.load("D:/codes/julia/usr/bin/libjulia.dll",F,T)
+y<-charToRaw("D:\\codes\\julia\\usr\\")
+.C("jl_init",y1=as.raw(y))
+y<-charToRaw('print("hello")')
+.C("jl_eval_string",y1=as.raw(y))
+}
 ## Initialise Julia
 julia_init <- function(juliahome="", disablegc = FALSE, parallel = TRUE)
 {
