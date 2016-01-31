@@ -5,8 +5,8 @@
 
 .onLoad <- function(libname, pkgname)
 {
-    .ldjulia <<- .juliaLib()
-    dyn.load(.ldjulia, local = FALSE)
+   .ldjulia <<- .juliaLib()
+    dll<-dyn.load(.ldjulia,F,T)
 }
 
 .onUnload <- function(libpath)

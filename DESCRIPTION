@@ -2,12 +2,11 @@ Package: rjulia2
 Type: Package
 Title: Integrating R and Julia -- Calling Julia from R
 Version: 0.1
-Date: 2015-08-01
+Date: 2016-01-31
 Author: Yu Gong [aut, cre]
 Maintainer: Yu Gong <armgong@yahoo.com>
 Description: An interface between R and Julia.  It allows to run a script
  in julia from R, i.e., call Julia on R objects and provides object type
  mapping between R and Julia.
-SystemRequirements: Julia (including C headers and RCall.jl),
- GNU make
+SystemRequirements: Julia (install RCall.jl), GNU make
 License: GPL-2
