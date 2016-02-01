@@ -28,8 +28,14 @@ julia_init <- function(juliahome="")
   jDo("using RCall")
 }
 
-r2j<-function(x,y)
+r2j<-function(rx,jx)
 {
-  z<-paste0(y,"=@rget ",x)
+  z<-paste0(jx,"=@rget ",rx)
   jDo(z)
+}
+
+j2r<-function(jx,rx)
+{
+ z<-paste0("globalEnv[:",rx,"]=",jx)
+ jDo(z) 
 }
