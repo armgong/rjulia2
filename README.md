@@ -4,4 +4,4 @@ new rjulia version use RCall.jl to Call julia from R, the target is don't need a
 
 Right now, rjulia2 only support julia 0.4 and R console, RGUI and Rstudio not supported. 
 
-see demo\testcode.R for basic usage. more demo will comming in next few days.
+see demo\testcode.R and demo\testdataframe.R for basic usage. more demo will comming in next few days.

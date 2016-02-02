@@ -24,7 +24,9 @@ julia_init <- function(juliahome="")
   ## If on Windows, run a specific push to compensate for R not handling pkg.dir() correctly.
   jDo('@windows_only push!(LOAD_PATH,joinpath(string(ENV["HOMEDRIVE"],ENV["HOMEPATH"]),".julia",string("v",VERSION.major,".",VERSION.minor)))')
   jDo('@windows_only ENV["HOME"]=joinpath(string(ENV["HOMEDRIVE"],ENV["HOMEPATH"]))')
-  ## Loading RCall package
+  ## Loading julia packages
+  jDo("using DataArrays")
+  jDo("using DataFrames")
   jDo("using RCall")
 }
 
