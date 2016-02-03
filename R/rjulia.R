@@ -16,6 +16,14 @@ jDo<-julia_void_eval<-julia_eval<-function(cmdstr)
 
 julia_init <- function(juliahome="")
 {
+  ##force change HOME env variable in R, R change HOME to c:\user\username\Documents 
+  ##but on window 7+ this should be c:\user\username, and it not change it, julia could not
+  ##find its package and compiled package, so let us change it  
+  if (Sys.info()[['sysname']]=="Windows")
+  {
+   Sys.setenv(HOME=paste0(Sys.getenv("HOMEDRIVE"),Sys.getenv("HOMEPATH")))
+  }
+
   juliabindir <- if (nchar(juliahome) > 0) juliahome else {
     gsub("\"", "", system('julia -E JULIA_HOME', intern=TRUE))
   }
