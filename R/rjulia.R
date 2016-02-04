@@ -11,7 +11,18 @@ ccall<-function(fname,cmdstr)
 # for version 1.0
 jDo<-julia_void_eval<-julia_eval<-function(cmdstr)
 {
+  #first clear julia exception
+  ccall("jl_eval_string",'ccall(:jl_exception_clear,Void,());')
+  #second eval julia expression
   ccall("jl_eval_string",cmdstr)
+  #then,try catch and show julia execption
+  ccall("jl_eval_string",
+        'if ccall(:jl_exception_occurred,Ptr{Void},())!=C_NULL
+            rjuliaexception=ccall(:jl_exception_occurred,Any,());
+            showerror(STDERR,rjuliaexception);
+            println("");
+            ccall(:jl_exception_clear,Void,());
+       end')  
 }
 
 julia_init <- function(juliahome="")
