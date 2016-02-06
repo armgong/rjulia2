@@ -8,9 +8,22 @@ ccall<-function(fname,cmdstr)
   #the ugly hack .C, need PACKAGE name libjulia, or error
   invisible(.C(fname,cstrnull(cmdstr),PACKAGE="libjulia"))
 }
+
+
+.julia_init_if_necessary <- function() {
+  if (!.isJuliaOk) {
+    message("Julia not yet running. Calling julia_init() ...")
+    julia_init()
+    if (!.isJuliaOk)
+      stop("Julia *still* not running. Giving up.")
+    else
+      message("julia_init complete successfully")
+  }
+}
 # for version 1.0
 jDo<-julia_void_eval<-julia_eval<-function(cmdstr)
 {
+  .julia_init_if_necessary()
   #first clear julia exception
   ccall("jl_eval_string",'ccall(:jl_exception_clear,Void,());')
   #second eval julia expression
@@ -39,7 +52,7 @@ julia_init <- function(juliahome="")
     gsub("\"", "", system('julia -E JULIA_HOME', intern=TRUE))
   }
   ccall("jl_init",juliabindir)
-  
+  .isJuliaOk<<-T 
   ## If on Windows, run a specific push to compensate for R not handling pkg.dir() correctly.
   jDo('@windows_only push!(LOAD_PATH,joinpath(string(ENV["HOMEDRIVE"],ENV["HOMEPATH"]),".julia",string("v",VERSION.major,".",VERSION.minor)))')
   jDo('@windows_only ENV["HOME"]=joinpath(string(ENV["HOMEDRIVE"],ENV["HOMEPATH"]))')
