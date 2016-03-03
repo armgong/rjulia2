@@ -6,8 +6,8 @@ Right now, rjulia2 support julia 0.4+ (RCall.jl,DataFrames.jl and DataArrays.jl 
 
 test on R console and RStudio both on windows and linux.
 
-Rstudio server need a patch, https://github.com/JuliaStats/RCall.jl/pull/91 
+In some system, Rstudio server may need a patch, https://github.com/JuliaStats/RCall.jl/pull/91 
 
 Windows RGUI is not support.
 
-see demo\testcode.R and demo\testdataframe.R for basic usage. more demo will comming in next few days.
+see testcode.R and testdataframe.R, testMatrix.R in demo dir for basic usage. more demo will comming in next few days.
