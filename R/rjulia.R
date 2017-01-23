@@ -5,8 +5,8 @@ cstrnull<-function(orgstr)
 
 ccall<-function(fname,cmdstr)
 {
-  #the ugly hack .C, need PACKAGE name libjulia, or error
-  invisible(.C(fname,cstrnull(cmdstr),PACKAGE="libjulia"))
+  functionsym<-getNativeSymbolInfo(fname)
+  invisible(.C(functionsym,cstrnull(cmdstr)))
 }
 
 
@@ -38,7 +38,7 @@ jDo<-julia_void_eval<-julia_eval<-function(cmdstr)
        end')  
 }
 
-julia_init <- function(juliahome="")
+jInit<-julia_init <- function(juliahome="")
 {
   ##force change HOME env variable in R, R change HOME to c:\user\username\Documents 
   ##but on window 7+ this should be c:\user\username, and it not change it, julia could not
@@ -54,11 +54,9 @@ julia_init <- function(juliahome="")
   ccall("jl_init",juliabindir)
   .isJuliaOk<<-T 
   ## If on Windows, run a specific push to compensate for R not handling pkg.dir() correctly.
-  jDo('@windows_only push!(LOAD_PATH,joinpath(string(ENV["HOMEDRIVE"],ENV["HOMEPATH"]),".julia",string("v",VERSION.major,".",VERSION.minor)))')
-  jDo('@windows_only ENV["HOME"]=joinpath(string(ENV["HOMEDRIVE"],ENV["HOMEPATH"]))')
+  ##jDo('@windows_only push!(LOAD_PATH,joinpath(string(ENV["HOMEDRIVE"],ENV["HOMEPATH"]),".julia",string("v",VERSION.major,".",VERSION.minor)))')
+  ##jDo('@windows_only ENV["HOME"]=joinpath(string(ENV["HOMEDRIVE"],ENV["HOMEPATH"]))')
   ## Loading julia packages
-  jDo("using DataArrays")
-  jDo("using DataFrames")
   jDo("using RCall")
 }
 

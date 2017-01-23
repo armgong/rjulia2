@@ -2,7 +2,7 @@ Package: rjulia2
 Type: Package
 Title: Integrating R and Julia -- Calling Julia from R
 Version: 0.1
-Date: 2016-01-31
+Date: 2017-01-24
 Author: Yu Gong [aut, cre]
 Maintainer: Yu Gong <armgong@yahoo.com>
 Description: An interface between R and Julia.  It allows to run a script
