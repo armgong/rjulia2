@@ -2,9 +2,9 @@ library(rjulia)
 
 julia_init()
 
-f <- function(n) {
-    stopifnot( n >= 1)
-    for (i in 1:n) {
+#f <- function(n) {
+#    stopifnot( n >= 1)
+    for (i in 1:1) {
 	## pass R array to Julia
 	x <- array(1.01:18.01, c(3,3,2))
 
@@ -18,9 +18,9 @@ f <- function(n) {
 	stopifnot(identical(y, x))
 	cat(sprintf("[Ok].  Elapsed system.time(): %g\n", st[["elapsed"]]))
     }
-}
+#}
 
-f(1)
+#f(1)
 #f(10)
 #xdd <- f(10000)
 

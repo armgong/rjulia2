@@ -10,13 +10,20 @@ j2r("jx","rx1")
 cat("float vector:",rx1,"\n")
 
 ## pass R int vector to Julia
-rx <- 1:5
+rx <- 1L
 r2j("rx","jx")
 ## get passed vector from Julia
 j2r("jx","rx1")
 cat("int vector:",rx1,"\n")
 
 ## pass R int vector to Julia
+rx <- 1:5
+r2j("rx","jx")
+## get passed vector from Julia
+j2r("jx","rx1")
+cat("int vector:",rx1,"\n")
+
+## pass R bool vector to Julia
 rx <- c(TRUE,FALSE,TRUE)
 r2j("rx","jx")
 ## get passed vector from Julia

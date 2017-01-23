@@ -13,7 +13,8 @@ rdf
 names(iris) <- c("sl","sw","pl","wl","speics")
 r2j("iris","jiris")
 j2r("jiris","riris")
-riris
+riris[1:10,]
+riris[140:150,]
 
 jDo('pdv = @pdata(["Group A", "Group A", "Group A","Group B", "Group B", "Group B"])')
 
@@ -29,5 +30,4 @@ rdf
 
 jDo('pool!(df, [:A, :B])')
 j2r('df',"rdf")
-rdf
 

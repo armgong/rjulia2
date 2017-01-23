@@ -57,6 +57,7 @@ jInit<-julia_init <- function(juliahome="")
   ##jDo('@windows_only push!(LOAD_PATH,joinpath(string(ENV["HOMEDRIVE"],ENV["HOMEPATH"]),".julia",string("v",VERSION.major,".",VERSION.minor)))')
   ##jDo('@windows_only ENV["HOME"]=joinpath(string(ENV["HOMEDRIVE"],ENV["HOMEPATH"]))')
   ## Loading julia packages
+  jDo("using DataFrames")
   jDo("using RCall")
 }
 
